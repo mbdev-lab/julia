@@ -15,14 +15,10 @@ class CreateUserMuteTable extends Migration
     {
         Schema::create('user_mute', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('muter_user_id');
+            $table->foreignId('muter_user_id')->constrained('users')
+                ->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedInteger('muted_user_id');
             $table->timestamps();
-
-            $table->foreignId('muter_user_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
         });
     }
 
