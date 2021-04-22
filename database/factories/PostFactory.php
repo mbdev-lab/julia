@@ -26,9 +26,7 @@ class PostFactory extends Factory
             'title' => $this->faker->text(255),
             'description' => $this->faker->realText(1000),
             'date' => now(),
-            'user_id' => function () {
-                return User::first()->id;
-            },
+            'user_id' => User::all()->random()->id,
         ];
     }
 }
