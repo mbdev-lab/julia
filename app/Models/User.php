@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'username',
     ];
 
     /**
@@ -40,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function fill(array $attributes)
+    {
+        if(empty($attributes['username']) && isset($attributes['name'])) {
+            $attributes['username'] = "@{$attributes['name']}";
+        }
+
+        return parent::fill($attributes);
+    }
+
 }
