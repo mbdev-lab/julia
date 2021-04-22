@@ -9,6 +9,8 @@ class Post extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,4 +22,5 @@ class Post extends Model
         'date',
         'user_id',
     ];
+
 }
