@@ -47,8 +47,13 @@ class User extends Authenticatable
         if(empty($attributes['username']) && isset($attributes['name'])) {
             $attributes['username'] = "@{$attributes['name']}";
         }
-
         return parent::fill($attributes);
     }
+
+    public function setUsernameAttribute($value)
+    {
+        $this->attributes['username'] = strtolower($value);
+    }
+
 
 }
