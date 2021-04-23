@@ -12,6 +12,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => [
                 'required',
+                'regex:/\w+$/',
                 function ($attribute, $value, $fail) use ($request){
                     if (!$request->post('username')) {
                         if (User::where('username', "@$value")->exists()) {
