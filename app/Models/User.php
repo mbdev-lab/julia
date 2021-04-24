@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -55,5 +54,14 @@ class User extends Authenticatable
         $this->attributes['username'] = strtolower($value);
     }
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function userMute()
+    {
+        return $this->hasMany(UserMute::class, 'muter_user_id');
+    }
 
 }
