@@ -21,8 +21,8 @@ class PostController extends Controller
             'sort_type' => 'required|string',
         ]);
 
-         return count($this->postService
+         return $this->postService
              ->postsByViewerId($validated['viewer_id'])
-             ->sort($validated['sort_type']));
+             ->sort($validated['sort_type']);
     }
 }
